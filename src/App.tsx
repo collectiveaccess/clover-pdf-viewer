@@ -1,18 +1,8 @@
-import { useState } from "react";
-import "./App.css";
-import reactLogo from "./assets/react.svg";
-import { Button } from "../lib/components/Button";
+import Viewer from "@samvera/clover-iiif/viewer";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <Button onClick={() => setCount((count) => count + 1)} /> count is {count}
-      <div>
-        <img src={reactLogo} className="logo react" alt="React logo" />
-      </div>
-    </>
+    <Viewer iiifContent="https://api.dc.library.northwestern.edu/api/v2/works/8a833741-74a8-40dc-bd1d-c416a3b1bb38?as=iiif" />
   );
 }
 
