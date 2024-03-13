@@ -50,7 +50,6 @@ return (
           componentProps: {
             showPdfThumbnails: true,
             showPdfToolBar: true,
-            showPdfSearch: true,
             showPdfZoom: true,
             showPdfPaging: true,
             showPdfRotate: true,
