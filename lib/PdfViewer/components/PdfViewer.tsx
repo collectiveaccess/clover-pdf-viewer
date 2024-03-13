@@ -63,10 +63,8 @@ export default function PdfViewer(props: PropType) {
 function RenderPdfViewer(props: PropType) {
   const { annotationBody } = props;
   const { configOptions } = useViewerState();
-  let {
-    pdfNumPages,
-    pdfPage,
-    pdfMagLevel,
+  let { pdfNumPages, pdfPage, pdfMagLevel } = configOptions;
+  const {
     pdfRotationValue,
     pdfFullscreen,
     pdfTwoPageSpread,

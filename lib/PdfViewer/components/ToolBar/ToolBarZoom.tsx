@@ -38,7 +38,7 @@ const ZoomIcon = () => {
 
 const ToolBarZoom = () => {
   const store = useViewerState();
-  let { configOptions } = store;
+  const { configOptions } = store;
   let { pdfMagLevel } = configOptions;
   const dispatch: any = useViewerDispatch();
   if (pdfMagLevel === undefined) {
@@ -79,7 +79,7 @@ const ToolBarZoom = () => {
     });
   };
 
-  let zoomSelectOptions = [50, 75, 100, 125, 150, 200, 300, 400];
+  const zoomSelectOptions = [50, 75, 100, 125, 150, 200, 300, 400];
 
   let nonOption = null;
 
@@ -93,9 +93,9 @@ const ToolBarZoom = () => {
     <div>
       <Popover.Root>
         <Popover.Trigger asChild>
-          <div className={styles.button}>
+          <button className={styles.button}>
             <ZoomIcon />
-          </div>
+          </button>
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content className="PopoverContent" sideOffset={5}>
@@ -110,12 +110,12 @@ const ToolBarZoom = () => {
                   );
                 })}
               </select>
-              <div className={styles.button} onClick={zoomOut}>
+              <button className={styles.button} onClick={zoomOut}>
                 <ZoomOutIcon />
-              </div>
-              <div className={styles.button} onClick={zoomIn}>
+              </button>
+              <button className={styles.button} onClick={zoomIn}>
                 <ZoomInIcon />
-              </div>
+              </button>
             </div>
           </Popover.Content>
         </Popover.Portal>

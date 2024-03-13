@@ -1,1 +1,2 @@
-export { Button } from "./components/Button";
+import PdfViewer from "./PdfViewer/components/PdfViewer";
+export default PdfViewer;
