@@ -179,7 +179,10 @@ const Controls = () => {
       <div className="document-toolbar-container">
         <div className={styles.controlsWrapper}>
           {showPdfToolBar && (
-            <div className={styles.button} onClick={toggleToolBar}>
+            <div
+              className={`${styles.button} ${styles.activeButton}`}
+              onClick={toggleToolBar}
+            >
               <ChevronUpIcon />
             </div>
           )}
@@ -214,7 +217,10 @@ const Controls = () => {
     return (
       <div className="document-toolbar-container">
         <div className={styles.controlsWrapper}>
-          <div className={styles.button} onClick={toggleToolBar}>
+          <div
+            className={`${styles.button} ${styles.activeButton}`}
+            onClick={toggleToolBar}
+          >
             <ChevronDownIcon />
           </div>
         </div>

@@ -22,13 +22,12 @@
   margin-bottom: 0.25rem;
 }
 
-.thumbnailContainer p.label {
+.label {
   text-align: center;
-  margin-top: 0;
-  color: red;
+  margin-top: 5px;
 }
 
-.thumbnailContainer .current-page {
+.current-page {
   border-width: 1px;
   border-style: solid;
   border-color: var(--colors-primary);

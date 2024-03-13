@@ -88,7 +88,7 @@ const ThumbnailBar = (props: any) => {
                 >
                   <div
                     className={`${
-                      pdfPage == thumbnail.page_num && "current-page"
+                      pdfPage == thumbnail.page_num && styles["current-page"]
                     }`}
                     onClick={(e) => changePage(e, thumbnail.page_num)}
                     style={{ cursor: "pointer" }}
@@ -99,7 +99,7 @@ const ThumbnailBar = (props: any) => {
                       )}
                     </VisibilitySensor>
                   </div>
-                  <p className="label">Page {thumbnail.page_num}</p>
+                  <p className={styles.label}>Page {thumbnail.page_num}</p>
                 </div>
               );
             })

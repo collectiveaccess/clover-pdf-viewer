@@ -3,7 +3,7 @@ import "pdfjs-dist/build/pdf.worker.entry";
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import type { IIIFExternalWebResource } from "@iiif/presentation-3";
 import VisibilitySensor from "react-visibility-sensor";
-
+import styles from "./PdfViewer.module.css";
 import PdfToolBar from "./Controls";
 import {
   ViewerProvider,
@@ -34,6 +34,7 @@ type PropType = {
   showPdfRotate: boolean;
   showPdfTwoPageSpread: boolean;
   showPdfFullScreen: boolean;
+  canvasHeight: string;
 };
 
 export default function PdfViewer(props: PropType) {
@@ -50,6 +51,7 @@ export default function PdfViewer(props: PropType) {
           showPdfRotate: props.showPdfRotate,
           showPdfTwoPageSpread: props.showPdfTwoPageSpread,
           showPdfFullScreen: props.showPdfFullScreen,
+          canvasHeight: props.canvasHeight,
         },
       }}
     >
@@ -225,16 +227,20 @@ function RenderPdfViewer(props: PropType) {
   }
 
   return (
-    <div id="pdf-viewer">
-      <div style={{ display: "flex", justifyContent: "center" }}>
+    <div
+      id="pdf-viewer"
+      className={`${styles.wrapper} pdf-viewer-wrapper`}
+      style={{
+        maxHeight: configOptions.canvasHeight,
+      }}
+    >
+      <div
+        id="pdf-controls"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
         <PdfToolBar />
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+      <div id="pdf-viewport" className={styles.viewport}>
         {pdfToggleThumbnails && !pdfFullscreen && (
           <ThumbnailBar url={file} height={"520px"} />
         )}

@@ -46,6 +46,10 @@
   background-color: var(--colors-accent);
 }
 
+.activeButton {
+  background-color: var(--colors-accent);
+}
+
 .button:disabled {
   background-color: transparent;
 }

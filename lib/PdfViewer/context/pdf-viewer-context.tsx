@@ -17,6 +17,7 @@ export type ConfigOptions = {
   showPdfRotate?: boolean;
   showPdfTwoPageSpread?: boolean;
   showPdfFullScreen?: boolean;
+  canvasHeight?: string;
 };
 
 const defaultConfigOptions: ConfigOptions = {
@@ -37,6 +38,7 @@ const defaultConfigOptions: ConfigOptions = {
   showPdfRotate: false,
   showPdfTwoPageSpread: false,
   showPdfFullScreen: false,
+  canvasHeight: "61.8vh",
 };
 
 interface ViewerContextStore {
