@@ -1,5 +1,5 @@
 import Viewer from "@samvera/clover-iiif/viewer";
-import PdfViewer from "../lib/PdfViewer/components/PdfViewer";
+import PdfViewer from "clover-pdf-viewer";
 
 function App() {
   return (
