@@ -1,0 +1,104 @@
+:root {
+  --colors-primary: #1a1d1e;
+  --colors-primaryMuted: #26292b;
+  --colors-primaryAlt: #151718;
+  --colors-accent: hsl(209 100% 38.2%);
+  --colors-accentMuted: hsl(209 80% 61.8%);
+  --colors-accentAlt: hsl(209 80% 30%);
+  --colors-secondary: #ffffff;
+  --colors-secondaryMuted: #e6e8eb;
+  --colors-secondaryAlt: #c1c8cd;
+  --transitions-all: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.button {
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 2rem;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-left: 0.618rem;
+  background-color: var(--colors-primary);
+  filter: drop-shadow(2px 2px 5px #0003);
+  transition: var(--transitions-all);
+  box-sizing: content-box !important;
+}
+
+.button svg {
+  height: 60%;
+  width: 60%;
+  padding: 20%;
+  fill: var(--colors-secondary);
+  stroke: var(--colors-secondary);
+  filter: drop-shadow(2px 2px 5px #0003);
+  transition: var(--transitions-all);
+  box-sizing: inherit;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--colors-accent);
+}
+
+.button:disabled {
+  background-color: transparent;
+}
+
+.button:disabled svg {
+  opacity: 0.25;
+}
+
+.pagingWrapper {
+  display: flex;
+  margin-left: 0.618rem;
+  background-color: var(--colors-accentAlt);
+  border-radius: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 5px;
+  color: var(--colors-secondary);
+  align-items: center;
+}
+
+.pagingWrapper > span {
+  display: flex;
+  margin: 0 0.5rem;
+  /* font-size: 0.7222rem; */
+}
+.pagingWrapper > button {
+  margin: 0;
+}
+
+.pagingWrapper input {
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.zoomWrapper {
+  display: flex;
+  margin-left: 0.618rem;
+  background-color: var(--colors-accentAlt);
+  border-radius: 2rem;
+  color: var(--colors-secondary);
+  align-items: center;
+}
+
+.zoomWrapper > button {
+  background-color: var(--colors-accent);
+}
+
+.zoomWrapper > select {
+  margin-left: 0.618rem;
+}
+
+.controlsWrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  padding: 0.5rem;
+  transition: var(--transitions-all);
+}

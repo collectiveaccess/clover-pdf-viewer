@@ -1,8 +1,11 @@
 import React from "react";
 import * as Popover from "@radix-ui/react-popover";
 
-import { useViewerState, useViewerDispatch } from "@/context/pdf-viewer-context";
-import { Button, ZoomWrapper } from "@/components/PdfViewer/Controls.styled";
+import {
+  useViewerState,
+  useViewerDispatch,
+} from "../../context/pdf-viewer-context";
+import styles from "../Controls.module.css";
 
 const ZoomInIcon = () => {
   return (
@@ -90,13 +93,13 @@ const ToolBarZoom = () => {
     <div>
       <Popover.Root>
         <Popover.Trigger asChild>
-          <Button>
+          <div className={styles.button}>
             <ZoomIcon />
-          </Button>
+          </div>
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content className="PopoverContent" sideOffset={5}>
-            <ZoomWrapper>
+            <div className={styles.zoomWrapper}>
               <select value={pdfMagLevel} onChange={(e) => handleZoom(e)}>
                 {nonOption}
                 {zoomSelectOptions.map((option, index) => {
@@ -107,13 +110,13 @@ const ToolBarZoom = () => {
                   );
                 })}
               </select>
-              <Button onClick={zoomOut}>
+              <div className={styles.button} onClick={zoomOut}>
                 <ZoomOutIcon />
-              </Button>
-              <Button onClick={zoomIn}>
+              </div>
+              <div className={styles.button} onClick={zoomIn}>
                 <ZoomInIcon />
-              </Button>
-            </ZoomWrapper>
+              </div>
+            </div>
           </Popover.Content>
         </Popover.Portal>
       </Popover.Root>

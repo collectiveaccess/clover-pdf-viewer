@@ -5,11 +5,8 @@ import VisibilitySensor from "react-visibility-sensor";
 import {
   useViewerState,
   useViewerDispatch,
-} from "@/context/pdf-viewer-context";
-import {
-  ThumbnailContainer,
-  ThumbnailList,
-} from "@/components/PdfViewer/ThumbnailBar.styled";
+} from "../context/pdf-viewer-context";
+import styles from "./ThumbnailBar.module.css";
 
 type VisibilityType = {
   isVisible: boolean;
@@ -38,7 +35,8 @@ const ThumbnailBar = (props: any) => {
         <Document file={props.url} loading={defaultPage}>
           <Page
             pageNumber={i}
-            height={200}
+            height={400}
+            width={120}
             renderTextLayer={false}
             renderAnnotationLayer={false}
           />
@@ -76,11 +74,15 @@ const ThumbnailBar = (props: any) => {
 
   if (showPdfThumbnails && pdfToggleThumbnails) {
     return (
-      <ThumbnailList style={{ height: props.height, overflow: "scroll" }}>
+      <div
+        className={styles.thumbnailList}
+        style={{ height: props.height, overflow: "scroll" }}
+      >
         {thumbnails
           ? thumbnails.map((thumbnail, index) => {
               return (
-                <ThumbnailContainer
+                <div
+                  className={styles.thumbnailContainer}
                   id={"thumbnail-" + `${thumbnail.page_num}`}
                   key={index}
                 >
@@ -98,11 +100,11 @@ const ThumbnailBar = (props: any) => {
                     </VisibilitySensor>
                   </div>
                   <p className="label">Page {thumbnail.page_num}</p>
-                </ThumbnailContainer>
+                </div>
               );
             })
           : null}
-      </ThumbnailList>
+      </div>
     );
   } else {
     return null;

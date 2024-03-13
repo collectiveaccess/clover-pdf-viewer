@@ -1,4 +1,3 @@
-import React from "react";
 import { Document, Page } from "react-pdf";
 import "pdfjs-dist/build/pdf.worker.entry";
 import type { PDFDocumentProxy } from "pdfjs-dist";
@@ -7,12 +6,11 @@ import VisibilitySensor from "react-visibility-sensor";
 
 import PdfToolBar from "./Controls";
 import {
-  type ConfigOptions,
   ViewerProvider,
   useViewerState,
   useViewerDispatch,
   defaultState,
-} from "@/context/pdf-viewer-context";
+} from "../context/pdf-viewer-context";
 
 import ThumbnailBar from "./ThumbnailBar";
 
@@ -26,9 +24,16 @@ type VisibilityType = {
 };
 
 type PropType = {
-  painting: IIIFExternalWebResource[];
+  annotationBody: IIIFExternalWebResource;
   id: string;
-  options?: ConfigOptions;
+  showPdfThumbnails: boolean;
+  showPdfToolBar: boolean;
+  showPdfSearch: boolean;
+  showPdfZoom: boolean;
+  showPdfPaging: boolean;
+  showPdfRotate: boolean;
+  showPdfTwoPageSpread: boolean;
+  showPdfFullScreen: boolean;
 };
 
 export default function PdfViewer(props: PropType) {
@@ -37,7 +42,14 @@ export default function PdfViewer(props: PropType) {
       initialState={{
         configOptions: {
           ...defaultState,
-          ...props.options,
+          showPdfThumbnails: props.showPdfThumbnails,
+          showPdfToolBar: props.showPdfToolBar,
+          showPdfSearch: props.showPdfSearch,
+          showPdfZoom: props.showPdfZoom,
+          showPdfPaging: props.showPdfPaging,
+          showPdfRotate: props.showPdfRotate,
+          showPdfTwoPageSpread: props.showPdfTwoPageSpread,
+          showPdfFullScreen: props.showPdfFullScreen,
         },
       }}
     >
@@ -47,7 +59,7 @@ export default function PdfViewer(props: PropType) {
 }
 
 function RenderPdfViewer(props: PropType) {
-  const { painting } = props;
+  const { annotationBody } = props;
   const { configOptions } = useViewerState();
   let {
     pdfNumPages,
@@ -69,7 +81,8 @@ function RenderPdfViewer(props: PropType) {
   if (pdfNumPages === undefined) {
     pdfNumPages = 1;
   }
-  const file = painting[0].id;
+
+  const file = annotationBody.id;
 
   function onDocumentLoadSuccess({
     numPages: nextNumPages,
@@ -81,11 +94,11 @@ function RenderPdfViewer(props: PropType) {
   }
 
   const toolbarHeight = 50;
-  const height = painting[0].height || 500 - toolbarHeight;
-  let currentPageWidth = (painting[0].width || 355) * (pdfMagLevel / 100);
-  let currentPageHeight = height * (pdfMagLevel / 100);
+  const height = annotationBody.height || 500 - toolbarHeight;
+  const currentPageWidth = (annotationBody.width || 355) * (pdfMagLevel / 100);
+  const currentPageHeight = height * (pdfMagLevel / 100);
 
-  let defaultPage = (
+  const defaultPage = (
     <div
       style={{
         margin: "auto",
@@ -96,7 +109,7 @@ function RenderPdfViewer(props: PropType) {
     ></div>
   );
 
-  let pdfPages = [];
+  const pdfPages = [];
   for (let i = 1; i <= pdfNumPages; i++) {
     pdfPages.push({
       page_num: i,
@@ -119,7 +132,7 @@ function RenderPdfViewer(props: PropType) {
     });
   }
 
-  let pdfPagesTwoSpread = [];
+  const pdfPagesTwoSpread = [];
   for (let i = 2; i <= pdfNumPages; i++) {
     pdfPagesTwoSpread.push([
       {

@@ -1,7 +1,10 @@
 import React from "react";
-import { useViewerState, useViewerDispatch } from "@/context/pdf-viewer-context";
+import {
+  useViewerState,
+  useViewerDispatch,
+} from "../../context/pdf-viewer-context";
 
-import { Button } from "@/components/PdfViewer/Controls.styled";
+import styles from "../Controls.module.css";
 
 const ExitFullScreenIcon = () => {
   return (
@@ -82,9 +85,9 @@ const ToolBarFullScreen = () => {
   };
 
   return (
-    <Button onClick={(e) => toggleFullScreen(e)}>
+    <div className={styles.button} onClick={(e) => toggleFullScreen(e)}>
       {pdfFullscreen ? <ExitFullScreenIcon /> : <FullScreenIcon />}
-    </Button>
+    </div>
   );
 };
 

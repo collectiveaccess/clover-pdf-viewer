@@ -3,8 +3,11 @@ import React from "react";
 import ToolBarFullScreen from "./ToolBar/ToolBarFullScreen";
 import ToolBarPaging from "./ToolBar/ToolBarPaging";
 import ToolBarZoom from "./ToolBar/ToolBarZoom";
-import { useViewerState, useViewerDispatch } from "@/context/pdf-viewer-context";
-import { Button, Wrapper } from "@/components/PdfViewer/Controls.styled";
+import {
+  useViewerState,
+  useViewerDispatch,
+} from "../context/pdf-viewer-context";
+import styles from "./Controls.module.css";
 
 const ChevronDownIcon = () => {
   return (
@@ -174,17 +177,17 @@ const Controls = () => {
   if (showPdfToolBar) {
     return (
       <div className="document-toolbar-container">
-        <Wrapper>
+        <div className={styles.controlsWrapper}>
           {showPdfToolBar && (
-            <Button onClick={toggleToolBar}>
+            <div className={styles.button} onClick={toggleToolBar}>
               <ChevronUpIcon />
-            </Button>
+            </div>
           )}
 
           {!pdfFullscreen && showPdfThumbnails ? (
-            <Button onClick={toggleThumbnailBar}>
+            <div className={styles.button} onClick={toggleThumbnailBar}>
               <ThumbnailIcon />
-            </Button>
+            </div>
           ) : null}
 
           {showPdfZoom && <ToolBarZoom />}
@@ -192,29 +195,29 @@ const Controls = () => {
           {showPdfPaging && <ToolBarPaging />}
 
           {showPdfRotate && (
-            <Button onClick={rotatePDF}>
+            <div className={styles.button} onClick={rotatePDF}>
               <RotateIcon />
-            </Button>
+            </div>
           )}
 
           {showPdfTwoPageSpread && (
-            <Button onClick={twoPage}>
+            <div className={styles.button} onClick={twoPage}>
               <TwoPageIcon />
-            </Button>
+            </div>
           )}
 
           {showPdfFullScreen && <ToolBarFullScreen />}
-        </Wrapper>
+        </div>
       </div>
     );
   } else {
     return (
       <div className="document-toolbar-container">
-        <Wrapper>
-          <Button onClick={toggleToolBar}>
+        <div className={styles.controlsWrapper}>
+          <div className={styles.button} onClick={toggleToolBar}>
             <ChevronDownIcon />
-          </Button>
-        </Wrapper>
+          </div>
+        </div>
       </div>
     );
   }

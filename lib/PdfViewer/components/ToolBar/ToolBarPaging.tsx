@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useViewerState, useViewerDispatch } from "@/context/pdf-viewer-context";
+import {
+  useViewerState,
+  useViewerDispatch,
+} from "../../context/pdf-viewer-context";
 
-import { Button, PagingWrapper } from "@/components/PdfViewer/Controls.styled";
+import styles from "../Controls.module.css";
 
 const PreviousIcon: React.FC = () => {
   return (
@@ -123,10 +126,14 @@ const ToolBarPaging = () => {
   };
 
   return (
-    <PagingWrapper>
-      <Button onClick={previousPage} disabled={isPreviousDisabled}>
+    <div className={styles.pagingWrapper}>
+      <button
+        className={styles.button}
+        onClick={previousPage}
+        disabled={isPreviousDisabled}
+      >
         <PreviousIcon />
-      </Button>
+      </button>
       <span>
         <input
           type="text"
@@ -135,10 +142,14 @@ const ToolBarPaging = () => {
         />{" "}
         of {pdfNumPages > 0 ? pdfNumPages : null}
       </span>
-      <Button onClick={nextPage} disabled={isNextDisabled}>
+      <button
+        className={styles.button}
+        onClick={nextPage}
+        disabled={isNextDisabled}
+      >
         <NextIcon />
-      </Button>
-    </PagingWrapper>
+      </button>
+    </div>
   );
 };
 

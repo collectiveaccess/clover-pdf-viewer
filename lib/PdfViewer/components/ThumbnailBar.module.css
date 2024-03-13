@@ -1,0 +1,35 @@
+:root {
+  --colors-primary: #1a1d1e;
+  --colors-primaryMuted: #26292b;
+  --colors-primaryAlt: #151718;
+  --colors-accent: hsl(209 100% 38.2%);
+  --colors-accentMuted: hsl(209 80% 61.8%);
+  --colors-accentAlt: hsl(209 80% 30%);
+  --colors-secondary: #ffffff;
+  --colors-secondaryMuted: #e6e8eb;
+  --colors-secondaryAlt: #c1c8cd;
+  --transitions-all: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.thumbnailList {
+  background-color: #f2f2f0;
+  padding: 10px;
+  width: 180px;
+}
+
+.thumbnailContainer {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.thumbnailContainer p.label {
+  text-align: center;
+  margin-top: 0;
+  color: red;
+}
+
+.thumbnailContainer .current-page {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--colors-primary);
+}
