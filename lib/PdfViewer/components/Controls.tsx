@@ -73,12 +73,11 @@ const TwoPageIcon = () => {
 
 const Controls = () => {
   const store = useViewerState();
-  let { configOptions } = store;
-  let {
+  const { configOptions } = store;
+  const {
     showPdfToolBar,
     showPdfZoom,
     showPdfRotate,
-    pdfRotationValue,
     showPdfFullScreen,
     pdfFullscreen,
     showPdfPaging,
@@ -87,6 +86,8 @@ const Controls = () => {
     showPdfTwoPageSpread,
     pdfTwoPageSpread,
   } = configOptions;
+  let { pdfRotationValue } = configOptions;
+
   const dispatch: any = useViewerDispatch();
 
   const toggleToolBar = (
@@ -179,18 +180,18 @@ const Controls = () => {
       <div className="document-toolbar-container">
         <div className={styles.controlsWrapper}>
           {showPdfToolBar && (
-            <div
+            <button
               className={`${styles.button} ${styles.activeButton}`}
               onClick={toggleToolBar}
             >
               <ChevronUpIcon />
-            </div>
+            </button>
           )}
 
           {!pdfFullscreen && showPdfThumbnails ? (
-            <div className={styles.button} onClick={toggleThumbnailBar}>
+            <button className={styles.button} onClick={toggleThumbnailBar}>
               <ThumbnailIcon />
-            </div>
+            </button>
           ) : null}
 
           {showPdfZoom && <ToolBarZoom />}
@@ -198,15 +199,15 @@ const Controls = () => {
           {showPdfPaging && <ToolBarPaging />}
 
           {showPdfRotate && (
-            <div className={styles.button} onClick={rotatePDF}>
+            <button className={styles.button} onClick={rotatePDF}>
               <RotateIcon />
-            </div>
+            </button>
           )}
 
           {showPdfTwoPageSpread && (
-            <div className={styles.button} onClick={twoPage}>
+            <button className={styles.button} onClick={twoPage}>
               <TwoPageIcon />
-            </div>
+            </button>
           )}
 
           {showPdfFullScreen && <ToolBarFullScreen />}
@@ -217,12 +218,12 @@ const Controls = () => {
     return (
       <div className="document-toolbar-container">
         <div className={styles.controlsWrapper}>
-          <div
+          <button
             className={`${styles.button} ${styles.activeButton}`}
             onClick={toggleToolBar}
           >
             <ChevronDownIcon />
-          </div>
+          </button>
         </div>
       </div>
     );

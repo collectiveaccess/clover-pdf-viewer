@@ -38,8 +38,9 @@ const ToolBarPaging = () => {
   const [isPreviousDisabled, setIsPreviousDisabled] = useState<boolean>(false);
 
   const store = useViewerState();
-  let { configOptions } = store;
-  let { pdfNumPages, pdfPage, pdfEnteredPage } = configOptions;
+  const { configOptions } = store;
+  let { pdfNumPages, pdfPage } = configOptions;
+  const { pdfEnteredPage } = configOptions;
   const dispatch: any = useViewerDispatch();
 
   if (pdfPage === undefined) {
@@ -103,7 +104,7 @@ const ToolBarPaging = () => {
     if (pdfNumPages === undefined) {
       pdfNumPages = 1;
     }
-    let p = parseInt(e.target.value);
+    const p = parseInt(e.target.value);
 
     if (p > 0 && p <= pdfNumPages) {
       dispatch({

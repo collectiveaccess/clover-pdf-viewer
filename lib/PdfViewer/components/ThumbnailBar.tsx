@@ -14,20 +14,20 @@ type VisibilityType = {
 
 const ThumbnailBar = (props: any) => {
   const { configOptions } = useViewerState();
-  let { pdfNumPages, pdfPage, showPdfThumbnails, pdfToggleThumbnails } =
-    configOptions;
+  const { pdfPage, showPdfThumbnails, pdfToggleThumbnails } = configOptions;
+  let { pdfNumPages } = configOptions;
   const dispatch: any = useViewerDispatch();
   if (pdfNumPages === undefined) {
     pdfNumPages = 1;
   }
 
-  let defaultPage = (
+  const defaultPage = (
     <div
       style={{ width: "100%", height: "200px", backgroundColor: "#fff" }}
     ></div>
   );
 
-  let thumbnails = [];
+  const thumbnails = [];
   for (let i = 1; i <= pdfNumPages; i++) {
     thumbnails.push({
       page_num: i,

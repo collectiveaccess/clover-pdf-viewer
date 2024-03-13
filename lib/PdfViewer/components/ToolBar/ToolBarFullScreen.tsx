@@ -34,24 +34,21 @@ const FullScreenIcon = () => {
 
 const ToolBarFullScreen = () => {
   const store = useViewerState();
-  let { configOptions } = store;
-  let { pdfFullscreen } = configOptions;
+  const { configOptions } = store;
+  const { pdfFullscreen } = configOptions;
   const dispatch: any = useViewerDispatch();
 
   const toggleFullScreen = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    var elem = document.getElementById("pdf-viewer");
+    const elem = document.getElementById("pdf-viewer");
     if (pdfFullscreen) {
       document.exitFullscreen();
-      document.webkitExitFullscreen();
     } else if (elem) {
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
       }
-      if (elem.webkitRequestFullscreen()) {
-        elem.webkitRequestFullscreen();
-      }
+      elem.requestFullscreen();
     }
     e.preventDefault();
   };
@@ -70,7 +67,7 @@ const ToolBarFullScreen = () => {
     }
   };
 
-  document.onwebkitfullscreenchange = function () {
+  document.onfullscreenchange = function () {
     if (!pdfFullscreen) {
       dispatch({
         type: "updateConfigOptions",
@@ -85,9 +82,9 @@ const ToolBarFullScreen = () => {
   };
 
   return (
-    <div className={styles.button} onClick={(e) => toggleFullScreen(e)}>
+    <button className={styles.button} onClick={(e) => toggleFullScreen(e)}>
       {pdfFullscreen ? <ExitFullScreenIcon /> : <FullScreenIcon />}
-    </div>
+    </button>
   );
 };
 
